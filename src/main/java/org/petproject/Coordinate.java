@@ -1,0 +1,6 @@
+package org.petproject;
+
+public class Coordinate {
+    int x;
+    int y;
+}
