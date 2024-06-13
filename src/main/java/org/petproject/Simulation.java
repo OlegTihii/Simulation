@@ -1,23 +1,27 @@
 package org.petproject;
 
+import org.petproject.entity.staticEntity.Ground;
+
 public class Simulation {
     int moveCounter = 0;
-    Map map = new Map();
     RenderMap renderMap = new RenderMap();
 
-    public static class Actions {
+    public class Actions {
 
-        public void initActions(){
+        public void initActions() {
+            renderMap.fullingMap();
+            renderMap.printMap();
 
         }
 
-        public void turnActions(){
+
+        public void turnActions() {
 
         }
     }
 
     public void startSimulation() {
-
+        new Actions().initActions();
     }
 
     public void pauseSimulation() {
