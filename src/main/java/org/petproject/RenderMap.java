@@ -3,8 +3,7 @@ package org.petproject;
 import org.petproject.entity.Entity;
 import org.petproject.entity.staticEntity.Ground;
 
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RenderMap {
@@ -14,7 +13,8 @@ public class RenderMap {
 
     public Map<Coordinate, Entity> map = new TreeMap<>();
 
-    public void fullingMap() {
+
+    public void addEntityOnMap() {
         for (int i = 0; i < RenderMap.LIMIT_X; i++) {
             for (int j = 0; j < RenderMap.LIMIT_Y; j++) {
                 map.put(new Coordinate(i, j), new Ground());
