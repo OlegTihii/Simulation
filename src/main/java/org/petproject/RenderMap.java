@@ -5,6 +5,7 @@ import org.petproject.entity.staticEntity.Ground;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class RenderMap {
 
@@ -22,6 +23,18 @@ public class RenderMap {
     }
 
     public void printMap() {
-        System.out.println(map.keySet());
+        String result = map.entrySet().stream()
+                .collect(Collectors.groupingBy(
+                        entry -> entry.getKey().x,
+                        TreeMap::new,
+                        Collectors.mapping(
+                                entry -> entry.getValue().toString(),
+                                Collectors.joining("")
+                        )
+                ))
+                .values().stream()
+                .collect(Collectors.joining("\n"));
+
+        System.out.println(result);
     }
 }
