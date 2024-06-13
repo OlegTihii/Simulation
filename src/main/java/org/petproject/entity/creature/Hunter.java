@@ -1,9 +1,19 @@
 package org.petproject.entity.creature;
 
 public class Hunter extends Creature {
-    int attackPower;
+    public int attackPower = 5;
+
+    public Hunter() {
+        hp = 20;
+        speed = 2;
+    }
 
     public void attack() {
+
+    }
+
+    @Override
+    public void makeMove() {
 
     }
 
@@ -11,5 +21,4 @@ public class Hunter extends Creature {
     public String toString() {
         return "🐺";
     }
-
 }

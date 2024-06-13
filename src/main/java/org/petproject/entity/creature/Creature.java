@@ -3,10 +3,9 @@ package org.petproject.entity.creature;
 import org.petproject.entity.Entity;
 
 public abstract class Creature extends Entity {
-    int hp;
-    int speed;
+    public int hp;
+    public int speed;
 
-    public void makeMove() {
-    }
+    abstract public void makeMove();
 
 }
