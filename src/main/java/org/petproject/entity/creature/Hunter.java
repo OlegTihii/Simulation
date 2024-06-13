@@ -7,4 +7,9 @@ public class Hunter extends Creature {
 
     }
 
+    @Override
+    public String toString() {
+        return "🐺";
+    }
+
 }
