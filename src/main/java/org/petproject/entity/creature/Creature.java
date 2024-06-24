@@ -1,11 +1,23 @@
 package org.petproject.entity.creature;
 
+import org.petproject.Coordinate;
 import org.petproject.entity.Entity;
 
+import java.util.ArrayDeque;
+
 public abstract class Creature extends Entity {
-    public int hp;
-    public int speed;
+
+    private ArrayDeque<Coordinate> routeToDestination = new ArrayDeque<>();
 
     abstract public void makeMove();
 
+    abstract public void eat();
+
+    public ArrayDeque<Coordinate> getRouteToDestination() {
+        return routeToDestination;
+    }
+
+    public void setRouteToDestination(ArrayDeque<Coordinate> routeToDestination) {
+        this.routeToDestination = routeToDestination;
+    }
 }
