@@ -20,7 +20,11 @@ public class RenderMap {
         int count = 0;
         for (int i = 0; i < RenderMap.LIMIT_X; i++) {
             for (int j = 0; j < RenderMap.LIMIT_Y; j++) {
-                map.put(new Coordinate(i, j), entityList.get(count));
+                Coordinate coordinate = new Coordinate(i, j);
+                map.put(coordinate, entityList.get(count));
+                entityList.get(count).setCoordinate(coordinate);
+                // todo есть ли тут проблемы? Нужно ли убрать строчку 23 и заменить ее
+                //  map.put(new Coordinate(i,j), entityList.get(count));
                 count++;
             }
         }
