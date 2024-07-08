@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class RenderMap {
 
-    public static final int LIMIT_X = 20;
-    public static final int LIMIT_Y = 20;
+    public static final int LIMIT_X = 10;
+    public static final int LIMIT_Y = 10;
 
     public Map<Coordinate, Entity> map = new TreeMap<>();
 
@@ -33,7 +33,7 @@ public class RenderMap {
     public void printMap() {
         String result = map.entrySet().stream()
                 .collect(Collectors.groupingBy(
-                        entry -> entry.getKey().x,
+                        entry -> entry.getKey().y,
                         TreeMap::new,
                         Collectors.mapping(
                                 entry -> entry.getValue().toString(),
@@ -44,5 +44,13 @@ public class RenderMap {
                 .collect(Collectors.joining("\n"));
 
         System.out.println(result);
+    }
+
+    public Map<Coordinate, Entity> getRenderMap() {
+        return map;
+    }
+
+    public void setRenderMap(Map<Coordinate, Entity> map) {
+        this.map = map;
     }
 }
