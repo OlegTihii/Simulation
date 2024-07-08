@@ -44,9 +44,8 @@ public class Simulation {
         public void turnActions() {
             for (Entity entity : entityList) {
                 if (entity instanceof Creature) {
-                    BFS.findPath(renderMap, (Creature) entity);
+                    ((Creature) entity).setRouteToDestination(BFS.findPath(renderMap, (Creature) entity).get());
                     ((Creature) entity).makeMove();
-                    //проверка на eat();
                 }
             }
         }

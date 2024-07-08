@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 
 public abstract class Creature extends Entity {
 
-    private ArrayDeque<Coordinate> routeToDestination = new ArrayDeque<>();
+    private ArrayDeque<Coordinate> routeToDestination;
 
     abstract public void makeMove();
 
