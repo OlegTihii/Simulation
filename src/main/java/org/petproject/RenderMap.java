@@ -1,8 +1,9 @@
 package org.petproject;
 
 import org.petproject.entity.Entity;
-import org.petproject.entity.staticEntity.Ground;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
@@ -14,10 +15,17 @@ public class RenderMap {
 
     public Map<Coordinate, Entity> map = new TreeMap<>();
 
-    public void fullingMap() {
+    public void addEntityOnMap(List<Entity> entityList) {
+        Collections.shuffle(entityList);
+        int count = 0;
         for (int i = 0; i < RenderMap.LIMIT_X; i++) {
             for (int j = 0; j < RenderMap.LIMIT_Y; j++) {
-                map.put(new Coordinate(i, j), new Ground());
+                Coordinate coordinate = new Coordinate(i, j);
+                map.put(coordinate, entityList.get(count));
+                entityList.get(count).setCoordinate(coordinate);
+                // todo есть ли тут проблемы? Нужно ли убрать строчку 23 и заменить ее
+                //  map.put(new Coordinate(i,j), entityList.get(count));
+                count++;
             }
         }
     }

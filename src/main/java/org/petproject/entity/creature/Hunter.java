@@ -1,10 +1,20 @@
 package org.petproject.entity.creature;
 
 public class Hunter extends Creature {
-    int attackPower;
 
-    public void attack() {
+
+    @Override
+    public void makeMove() {
 
     }
 
+    @Override
+    public void eat() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "🐺";
+    }
 }
