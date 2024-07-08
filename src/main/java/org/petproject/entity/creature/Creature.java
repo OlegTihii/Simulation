@@ -11,8 +11,6 @@ public abstract class Creature extends Entity {
 
     abstract public void makeMove();
 
-    abstract public void eat();
-
     public ArrayDeque<Coordinate> getRouteToDestination() {
         return routeToDestination;
     }
