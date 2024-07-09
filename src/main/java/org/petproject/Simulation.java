@@ -15,6 +15,8 @@ import java.util.List;
 public class Simulation {
     int moveCounter = 0;
     RenderMap renderMap = new RenderMap();
+
+    Actions actions = new Actions();
     private List<Entity> entityList;
     BreadthFirstSearchAlgorithm BFS = new BreadthFirstSearchAlgorithm();
 
@@ -23,8 +25,17 @@ public class Simulation {
         public void initActions() {
             addEntityToList();
             renderMap.addEntityOnMap(entityList);
+            findPathToDestination();
             renderMap.printMap();
-            turnActions();
+            nextTurn();
+        }
+
+        private void findPathToDestination() {
+            for (Entity entity : entityList) {
+                if (entity instanceof Creature) {
+                    ((Creature) entity).setRouteToDestination(BFS.findPath(renderMap, (Creature) entity).get());
+                }
+            }
         }
 
         //todo добавить существ
@@ -44,12 +55,10 @@ public class Simulation {
         public void turnActions() {
             for (Entity entity : entityList) {
                 if (entity instanceof Creature) {
-                    ((Creature) entity).setRouteToDestination(BFS.findPath(renderMap, (Creature) entity).get());
                     ((Creature) entity).makeMove();
                 }
             }
         }
-
     }
 
     public List<Entity> getEntityList() {
@@ -61,7 +70,7 @@ public class Simulation {
     }
 
     public void startSimulation() {
-        new Actions().initActions();
+        actions.initActions();
     }
 
     public void pauseSimulation() {
@@ -70,7 +79,17 @@ public class Simulation {
 
     public void nextTurn() {
 
+        while (true) {
+            try {
+                Thread.sleep(1000);
+                actions.turnActions();
+                renderMap.changeCoordinateForCreature();
+                renderMap.printMap();
+
+
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
-
-
 }

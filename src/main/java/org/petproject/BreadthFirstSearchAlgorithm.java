@@ -62,6 +62,7 @@ public class BreadthFirstSearchAlgorithm {
         }
 
         if (path.getFirst().equals(start)) {
+            path.removeFirst(); //todo костыль, что бы путь начинался не со своей нынешней координаты
             return path;
         }
 

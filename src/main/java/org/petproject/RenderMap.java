@@ -1,12 +1,10 @@
 package org.petproject;
 
 import org.petproject.entity.Entity;
+import org.petproject.entity.creature.Creature;
+import org.petproject.entity.staticEntity.Ground;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class RenderMap {
 
@@ -30,20 +28,29 @@ public class RenderMap {
         }
     }
 
-    public void printMap() {
-        String result = map.entrySet().stream()
-                .collect(Collectors.groupingBy(
-                        entry -> entry.getKey().y,
-                        TreeMap::new,
-                        Collectors.mapping(
-                                entry -> entry.getValue().toString(),
-                                Collectors.joining("")
-                        )
-                ))
-                .values().stream()
-                .collect(Collectors.joining("\n"));
+    public void changeCoordinateForCreature() {
+        for(Map.Entry<Coordinate,Entity> mapEntry : map.entrySet()){
+          if(mapEntry.getValue() instanceof Creature creature){
+              map.put(mapEntry.getKey(), new Ground());
+              map.put(creature.getCoordinate(), creature);
+          }
+        }
+    }
 
+    public void printMap() {
+        StringBuilder result = new StringBuilder();
+
+        for (int y = 0; y < LIMIT_Y; y++) {
+            for (int x = 0; x < LIMIT_X; x++) {
+                Coordinate coordinate = new Coordinate(x, y);
+                result.append(map.get(coordinate));
+                if (x == LIMIT_X - 1) {
+                    result.append("\n");
+                }
+            }
+        }
         System.out.println(result);
+        System.out.println("==========");
     }
 
     public Map<Coordinate, Entity> getRenderMap() {
