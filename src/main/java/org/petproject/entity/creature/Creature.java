@@ -8,7 +8,7 @@ import org.petproject.entity.Entity;
 import java.util.ArrayDeque;
 
 public abstract class Creature extends Entity {
-    public int hp;
+    protected int hp;
     private BreadthFirstSearchAlgorithm BFS = new BreadthFirstSearchAlgorithm();
     private ArrayDeque<Coordinate> routeToDestination;
 
