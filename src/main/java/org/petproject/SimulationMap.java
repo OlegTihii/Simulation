@@ -51,9 +51,13 @@ public class SimulationMap {
         }
     }
 
+    public void deleteEntity(Coordinate coordinate) {
+        map.put(coordinate, new Ground());
+    }
+
     public void changeCoordinateForCreature() {
-        for(Map.Entry<Coordinate,Entity> mapEntry : map.entrySet()){
-            if(mapEntry.getValue() instanceof Creature creature){
+        for (Map.Entry<Coordinate, Entity> mapEntry : map.entrySet()) {
+            if (mapEntry.getValue() instanceof Creature creature) {
                 map.put(mapEntry.getKey(), new Ground());
                 map.put(creature.getCoordinate(), creature);
             }

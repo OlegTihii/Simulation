@@ -5,7 +5,7 @@ import org.petproject.SimulationMap;
 public class Herbivore extends Creature {
 
     public void eatGrass(SimulationMap simulationMap) {
-
+        simulationMap.deleteEntity(getRouteToDestination().getFirst());
     }
 
     //todo При каждом движении, вычислять маршрут до цели не рационально (ИМХО)
