@@ -1,5 +1,8 @@
 package org.petproject.entity.creature;
 
+import org.petproject.RenderMap;
+import org.petproject.SimulationMap;
+
 public class Hunter extends Creature {
 
     public void attackHerbivore() {
@@ -7,7 +10,7 @@ public class Hunter extends Creature {
     }
 
     @Override
-    public void makeMove() {
+    public void makeMove(SimulationMap simulationMap) {
 
     }
 

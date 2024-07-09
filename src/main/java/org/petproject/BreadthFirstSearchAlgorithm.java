@@ -1,7 +1,6 @@
 package org.petproject;
 
 import org.petproject.entity.Entity;
-import org.petproject.entity.creature.Creature;
 import org.petproject.entity.staticEntity.Grass;
 import org.petproject.entity.staticEntity.Rock;
 import org.petproject.entity.staticEntity.Tree;
@@ -11,23 +10,23 @@ import java.util.*;
 public class BreadthFirstSearchAlgorithm {
 
     //todo нормально ли возвращать Optional или можно оставить List.
-    public Optional<ArrayDeque<Coordinate>> findPath(RenderMap map, Creature creature) {
+    public Optional<ArrayDeque<Coordinate>> findPath(Map<Coordinate, Entity> map, Coordinate coordinate) {
         Queue<Coordinate> queue = new LinkedList<>();
         Set<Coordinate> visited = new HashSet<>();
         Map<Coordinate, Coordinate> parent = new HashMap<>();
 
-        queue.add(creature.getCoordinate());
-        visited.add(creature.getCoordinate());
+        queue.add(coordinate);
+        visited.add(coordinate);
 
         int[] arrX = {-1, 1, 0, 0};
         int[] arrY = {0, 0, -1, 1};
 
         while (!queue.isEmpty()) {
             Coordinate current = queue.poll();
-            Entity entity = map.getRenderMap().get(current);
+            Entity entity = map.get(current);
 
             if (entity instanceof Grass) {
-                return Optional.of(constructPath(parent, creature.getCoordinate(), current));
+                return Optional.of(constructPath(parent, coordinate, current));
             }
 
             for (int i = 0; i < 4; i++) {
