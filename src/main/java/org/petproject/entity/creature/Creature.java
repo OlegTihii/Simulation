@@ -13,8 +13,9 @@ public abstract class Creature extends Entity {
 
     abstract public void makeMove(SimulationMap simulationMap);
 
+    //todo Зря я тут Optional использую.
     public void findPathToDestination(SimulationMap simulationMap) {
-        routeToDestination = BFS.findPath(simulationMap.getMap(), getCoordinate()).get();
+        routeToDestination = BFS.findPath(simulationMap.getMap(), getCoordinate()).orElseGet(ArrayDeque::new);
     }
 
     public ArrayDeque<Coordinate> getRouteToDestination() {

@@ -11,11 +11,6 @@ import org.petproject.entity.staticEntity.Tree;
 
 import java.util.*;
 
-/*Свойста класса:
- * 1. Добавлять сущности
- * 2. Удалять сущности
- * 3. Редактировать
- **/
 public class SimulationMap {
     private RenderMap renderMap;
     private List<Entity> entityList;
