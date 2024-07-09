@@ -3,6 +3,9 @@ package org.petproject.entity.creature;
 import org.petproject.SimulationMap;
 
 public class Herbivore extends Creature {
+    public Herbivore(){
+        this.hp = 10;
+    }
 
     public void eatGrass(SimulationMap simulationMap) {
         simulationMap.deleteEntity(getRouteToDestination().getFirst());
@@ -19,10 +22,8 @@ public class Herbivore extends Creature {
         }
     }
 
-
     @Override
     public String toString() {
         return "🐇";
     }
-
 }

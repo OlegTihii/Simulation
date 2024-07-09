@@ -17,6 +17,7 @@ public class RenderMap {
                 }
             }
         }
+
         System.out.println(result);
         System.out.println("==========");
     }

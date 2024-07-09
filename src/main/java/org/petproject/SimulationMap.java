@@ -47,7 +47,8 @@ public class SimulationMap {
     }
 
     public void deleteEntity(Coordinate coordinate) {
-        map.put(coordinate, new Ground());
+        Entity deletedEntity = map.put(coordinate, new Ground());
+        entityList.set(entityList.indexOf(deletedEntity), new Ground());
     }
 
     public void changeCoordinateForCreature() {
@@ -63,23 +64,7 @@ public class SimulationMap {
         return entityList;
     }
 
-    public void setEntityList(List<Entity> entityList) {
-        this.entityList = entityList;
-    }
-
-    public RenderMap getRenderMap() {
-        return renderMap;
-    }
-
-    public void setRenderMap(RenderMap renderMap) {
-        this.renderMap = renderMap;
-    }
-
     public Map<Coordinate, Entity> getMap() {
         return map;
-    }
-
-    public void setMap(Map<Coordinate, Entity> map) {
-        this.map = map;
     }
 }
