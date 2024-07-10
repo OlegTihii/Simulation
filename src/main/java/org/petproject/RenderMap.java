@@ -18,7 +18,7 @@ public class RenderMap {
             }
         }
 
-        System.out.println("\u001B[1m Ход: " + moveCounter + "\u001B[0m");
+        System.out.println("\u001B[1m Step: " + moveCounter + "\u001B[0m");
         System.out.println(result);
     }
 }
