@@ -32,6 +32,8 @@ public class SimulationMap {
     }
 
     public void addEntityOnMap() {
+      //  long seed = 12346L;
+        //  Random random = new Random(seed);
         Collections.shuffle(entityList);
         int count = 0;
         for (int i = 0; i < RenderMap.LIMIT_X; i++) {
