@@ -3,7 +3,7 @@ package org.petproject;
 import org.petproject.entity.Entity;
 import org.petproject.entity.creature.Creature;
 import org.petproject.entity.creature.Herbivore;
-import org.petproject.entity.creature.Hunter;
+import org.petproject.entity.creature.Predator;
 import org.petproject.entity.staticEntity.Grass;
 import org.petproject.entity.staticEntity.Ground;
 import org.petproject.entity.staticEntity.Rock;
@@ -12,28 +12,33 @@ import org.petproject.entity.staticEntity.Tree;
 import java.util.*;
 
 public class SimulationMap {
-    private RenderMap renderMap;
     private List<Entity> entityList;
     private Map<Coordinate, Entity> map = new TreeMap<>();
 
-
-    //todo добавить существ
     public void addEntityToList() {
         int limitEntity = RenderMap.LIMIT_X * RenderMap.LIMIT_Y;
         entityList = new ArrayList<>(limitEntity);
-        entityList.add(new Herbivore());
-        entityList.add(new Hunter());
-        entityList.add(new Grass());
-        entityList.add(new Rock());
-        entityList.add(new Tree());
+        for (int i = 0; i < limitEntity / 20; i++) {
+            entityList.add(new Herbivore());
+        }
+        for (int i = 0; i < limitEntity / 80; i++) {
+            entityList.add(new Predator());
+        }
+        for (int i = 0; i < limitEntity / 10; i++) {
+            entityList.add(new Grass());
+        }
+        for (int i = 0; i < limitEntity / 40; i++) {
+            entityList.add(new Rock());
+        }
+        for (int i = 0; i < limitEntity / 5; i++) {
+            entityList.add(new Tree());
+        }
         while (limitEntity - entityList.size() != 0) {
             entityList.add(new Ground());
         }
     }
 
     public void addEntityOnMap() {
-      //  long seed = 12346L;
-        //  Random random = new Random(seed);
         Collections.shuffle(entityList);
         int count = 0;
         for (int i = 0; i < RenderMap.LIMIT_X; i++) {
@@ -41,7 +46,7 @@ public class SimulationMap {
                 Coordinate coordinate = new Coordinate(i, j);
                 map.put(coordinate, entityList.get(count));
                 entityList.get(count).setCoordinate(coordinate);
-                // todo есть ли тут проблемы? Нужно ли убрать строчку 23 и заменить ее
+                // todo есть ли тут проблемы? Нужно ли убрать строчку 46 и заменить ее
                 //  map.put(new Coordinate(i,j), entityList.get(count));
                 count++;
             }

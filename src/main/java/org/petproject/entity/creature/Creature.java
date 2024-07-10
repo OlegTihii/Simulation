@@ -23,7 +23,4 @@ public abstract class Creature extends Entity {
         return routeToDestination;
     }
 
-    public void setRouteToDestination(ArrayDeque<Coordinate> routeToDestination) {
-        this.routeToDestination = routeToDestination;
-    }
 }

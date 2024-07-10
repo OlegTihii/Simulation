@@ -3,7 +3,7 @@ package org.petproject;
 import org.petproject.entity.Entity;
 import org.petproject.entity.creature.Creature;
 import org.petproject.entity.creature.Herbivore;
-import org.petproject.entity.creature.Hunter;
+import org.petproject.entity.creature.Predator;
 import org.petproject.entity.staticEntity.Grass;
 import org.petproject.entity.staticEntity.Ground;
 
@@ -29,7 +29,7 @@ public class BreadthFirstSearchAlgorithm {
 
             if (creature instanceof Herbivore && entity instanceof Grass) {
                 return Optional.of(constructPath(parent, creature.getCoordinate(), current));
-            } else if (creature instanceof Hunter && entity instanceof Herbivore) {
+            } else if (creature instanceof Predator && entity instanceof Herbivore) {
                 return Optional.of(constructPath(parent, creature.getCoordinate(), current));
             }
 
@@ -63,7 +63,7 @@ public class BreadthFirstSearchAlgorithm {
         }
 
         if (path.getFirst().equals(start)) {
-            path.removeFirst(); //todo костыль, что бы путь начинался не со своей нынешней координаты
+            path.removeFirst(); //todo костыль, чтобы путь начинался не со своей нынешней координаты
             return path;
         }
 
@@ -89,7 +89,7 @@ public class BreadthFirstSearchAlgorithm {
     public boolean canMoveTo(Entity entity, Creature creature) {
         if (creature instanceof Herbivore) {
             return (entity instanceof Ground);
-        } else if (creature instanceof Hunter) {
+        } else if (creature instanceof Predator) {
             return entity instanceof Ground || entity instanceof Grass;
         } else {
             return false;

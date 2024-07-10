@@ -40,6 +40,4 @@ public class Coordinate implements Comparable<Coordinate> {
                 ", y=" + y +
                 '}';
     }
-
-
 }

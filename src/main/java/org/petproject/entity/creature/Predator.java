@@ -3,10 +3,10 @@ package org.petproject.entity.creature;
 import org.petproject.SimulationMap;
 import org.petproject.entity.Entity;
 
-public class Hunter extends Creature {
+public class Predator extends Creature {
     public int attackToHerbivore = 5;
 
-    public Hunter() {
+    public Predator() {
         this.hp = 30;
     }
 

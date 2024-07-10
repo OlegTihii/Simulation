@@ -2,10 +2,10 @@ package org.petproject;
 
 public class RenderMap {
 
-    public static final int LIMIT_X = 10;
-    public static final int LIMIT_Y = 10;
+    public static final int LIMIT_X = 15;
+    public static final int LIMIT_Y = 15;
 
-    public void printMap(SimulationMap simulationMap) {
+    public void printMap(SimulationMap simulationMap, int moveCounter) {
         StringBuilder result = new StringBuilder();
 
         for (int y = 0; y < LIMIT_Y; y++) {
@@ -18,7 +18,7 @@ public class RenderMap {
             }
         }
 
+        System.out.println("\u001B[1m Ход: " + moveCounter + "\u001B[0m");
         System.out.println(result);
-        System.out.println("==========");
     }
 }
